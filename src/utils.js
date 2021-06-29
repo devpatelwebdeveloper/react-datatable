@@ -2415,11 +2415,6 @@ export default [
     Module: "TP1"
   },
   {
-    formname: "formname",
-    category: "category",
-    Module: "Module"
-  },
-  {
     formname: "S58",
     category: "Federal",
     Module: "T2"
@@ -4130,11 +4125,6 @@ export default [
     Module: "T2"
   },
   {
-    formname: "formname",
-    category: "category",
-    Module: "Module"
-  },
-  {
     formname: "Info",
     category: "Return & Schedule Forms",
     Module: "T3 & TP646"
@@ -4938,11 +4928,6 @@ export default [
     formname: "TP1129.53",
     category: "Other",
     Module: "TP646"
-  },
-  {
-    formname: "formname",
-    category: "category",
-    Module: "Module"
   },
   {
     formname: "FIN146",
