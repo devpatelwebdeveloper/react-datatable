@@ -1,0 +1,60 @@
+.filterButtonsContent{
+  display: flex;
+  flex-direction: row;
+  margin:20px auto;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #393a3d;
+  border-bottom: 1px solid #393a3d;
+  padding: 20px;
+  overflow-x: scroll
+}
+
+.filterButtons{
+  /* button*/
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: none;
+  text-shadow: 0px 0px 0px transparent;
+  color: #393a3d;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight:500;
+  padding: 0 16px;
+  cursor: pointer;
+  
+  text-align: center;
+  &:not(:last-child){
+
+    border-right: 1px solid black;
+  }
+
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+  &:after {
+    margin-top:4px;
+    background-color: white;
+    content: "";
+    display: block;
+    height: 0.25rem;
+    width: 100%;
+    
+  }
+}
+
+.currentFiltered{
+  color: #393a3d;
+  font-weight:700;
+  
+  &:after {
+    margin-top:4px;
+    background-color: #00aeef;
+    content: "";
+    display: block;
+    height: 0.25rem;
+    width: 100%;
+  }
+}
