@@ -6,8 +6,8 @@ import data from "./utils";
 export default function App() {
   return (
     <div className="App">
-      <TabSelector />
-      {/* <FilterData data={data} /> */}
+      {/* <TabSelector /> */}
+      <FilterData data={data} />
     </div>
   );
 }

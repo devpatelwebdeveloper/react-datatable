@@ -38,3 +38,15 @@ tbody td {
 /* tbody tr:hover {
   background-color: #eee;
 } */
+
+/* thead button.ascending::after {
+  content: "👇";
+  display: inline-block;
+  margin-left: 1em;
+}
+
+thead button.descending::after {
+  content: "☝️";
+  display: inline-block;
+  margin-left: 1em;
+} */

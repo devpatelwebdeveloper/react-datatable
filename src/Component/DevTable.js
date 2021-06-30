@@ -13,19 +13,8 @@ const ProductTable = (props) => {
     return sortConfig.key === name ? sortConfig.direction : null;
   };
 
-  function filteration(data, value) {
-    const newarr = data.filter((item) => {
-      if (!value) return true;
-      if (
-        item.formname.toLowerCase().includes(value.toLowerCase()) ||
-        item.category.toLowerCase().includes(value.toLowerCase())
-      ) {
-        return true;
-      }
-      return false;
-    });
-    return newarr;
-  }
+  console.log(items.length);
+
   return (
     <>
       <table className={styles.datatable}>
@@ -52,12 +41,20 @@ const ProductTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => (
-            <tr key={index} className={styles.tablerow}>
-              <td className={styles.tabledata}>{item.formname}</td>
-              <td className={styles.tabledata}>{item.category}</td>
+          {items.length === 0 ? (
+            <tr className={styles.tablerow}>
+              <td colspan="2" className={styles.tabledata}>
+                test
+              </td>
             </tr>
-          ))}
+          ) : (
+            items.map((item, index) => (
+              <tr key={index} className={styles.tablerow}>
+                <td className={styles.tabledata}>{item.formname}</td>
+                <td className={styles.tabledata}>{item.category}</td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </>
