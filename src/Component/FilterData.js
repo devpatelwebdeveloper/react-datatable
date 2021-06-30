@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ProductTable from "./DevTable";
+import styles from "./DataTable.module.scss";
 
-const FilterData = ({ amazing }) => {
+const FilterData = ({ data }) => {
   const [filteredData, setFilteredData] = useState("");
 
   function filteration(data, value) {
@@ -20,14 +21,16 @@ const FilterData = ({ amazing }) => {
 
   return (
     <>
-      <div>
+      <div className={styles.search}>
+        <span className={styles.searchLabel}>Search: </span>
         <input
+          className={styles.inputlabel}
           type="text"
           value={filteredData}
           onChange={(e) => setFilteredData(e.target.value)}
         />
       </div>
-      <ProductTable data={filteration(amazing, filteredData)} />
+      <ProductTable data={filteration(data, filteredData)} />
     </>
   );
 };

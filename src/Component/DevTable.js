@@ -28,13 +28,6 @@ const ProductTable = (props) => {
   }
   return (
     <>
-      {/* <div>
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-      </div> */}
       <table className={styles.datatable}>
         <thead className={styles.datatablethead}>
           <tr>
