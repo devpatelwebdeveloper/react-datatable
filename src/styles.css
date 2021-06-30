@@ -3,12 +3,7 @@ body {
   font-size: 16px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-thead th {
+/* thead th {
   text-align: left;
   border-bottom: 2px solid black;
 }

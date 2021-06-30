@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSortableData } from "./hooks";
+import styles from "./DataTable.module.scss";
 
 const ProductTable = (props) => {
   const [value, setValue] = useState(""); //Filter Values
@@ -9,7 +10,7 @@ const ProductTable = (props) => {
     if (!sortConfig) {
       return;
     }
-    return sortConfig.key === name ? sortConfig.direction : undefined;
+    return sortConfig.key === name ? sortConfig.direction : null;
   };
 
   function filteration(data, value) {
@@ -34,23 +35,23 @@ const ProductTable = (props) => {
           onChange={(e) => setValue(e.target.value)}
         />
       </div> */}
-      <table>
-        <thead>
+      <table className={styles.datatable}>
+        <thead className={styles.datatablethead}>
           <tr>
-            <th>
+            <th className={styles.thformname}>
               <button
                 type="button"
                 onClick={() => requestSort("formname")}
-                className={getClassNamesFor("formname")}
+                className={`${styles.theadbtn} ${getClassNamesFor("formname")}`}
               >
                 Form Name
               </button>
             </th>
-            <th>
+            <th className={styles.thcategory}>
               <button
                 type="button"
                 onClick={() => requestSort("category")}
-                className={getClassNamesFor("category")}
+                className={`${styles.theadbtn} ${getClassNamesFor("category")}`}
               >
                 Category
               </button>
@@ -58,27 +59,10 @@ const ProductTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {/* {items
-            .filter((item) => {
-              if (!value) return true;
-              if (
-                item.formname.includes(value) ||
-                item.category.includes(value)
-              ) {
-                return true;
-              }
-              return false;
-            })
-            .map((item) => (
-              <tr>
-                <td>{item.formname}</td>
-                <td>{item.category}</td>
-              </tr>
-            ))} */}
           {items.map((item, index) => (
-            <tr key={index}>
-              <td>{item.formname}</td>
-              <td>{item.category}</td>
+            <tr key={index} className={styles.tablerow}>
+              <td className={styles.tabledata}>{item.formname}</td>
+              <td className={styles.tabledata}>{item.category}</td>
             </tr>
           ))}
         </tbody>
