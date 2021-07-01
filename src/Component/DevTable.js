@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useSortableData } from "./hooks";
+import ReactPaginate from "react-paginate";
 import styles from "./DataTable.module.scss";
 
 const ProductTable = (props) => {
-  const [value, setValue] = useState(""); //Filter Values
+  const [currentPage, setCurrentPage] = useState(0); //Pagination
 
   const { items, requestSort, sortConfig } = useSortableData(props.data);
   const getClassNamesFor = (name) => {
@@ -13,7 +14,13 @@ const ProductTable = (props) => {
     return sortConfig.key === name ? sortConfig.direction : null;
   };
 
-  console.log(items.length);
+  // Pagination
+  const PER_PAGE = 5;
+  const pageCount = Math.ceil(items.length / PER_PAGE);
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
+  }
+  const offset = currentPage * PER_PAGE;
 
   return (
     <>
@@ -44,11 +51,11 @@ const ProductTable = (props) => {
           {items.length === 0 ? (
             <tr className={styles.tablerow}>
               <td colspan="2" className={styles.tabledata}>
-                test
+                No matching records found
               </td>
             </tr>
           ) : (
-            items.map((item, index) => (
+            items.slice(offset, offset + PER_PAGE).map((item, index) => (
               <tr key={index} className={styles.tablerow}>
                 <td className={styles.tabledata}>{item.formname}</td>
                 <td className={styles.tabledata}>{item.category}</td>
@@ -57,6 +64,27 @@ const ProductTable = (props) => {
           )}
         </tbody>
       </table>
+      <div className={styles.datatablefooter}>
+        <div className={styles.datatableshowing}>
+          <span>
+            Showing {offset + 1} to {offset + PER_PAGE} of {items.length}{" "}
+            entries
+          </span>
+        </div>
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          containerClassName={styles.pagination}
+          previousLinkClassName={styles.paginationLink}
+          nextLinkClassName={styles.paginationLink}
+          disabledClassName={styles.paginationDisabled}
+          activeClassName={styles.paginationActive}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={1}
+        />
+      </div>
     </>
   );
 };
